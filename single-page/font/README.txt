@@ -30,7 +30,7 @@ Comments on archive content
 - LICENSE.txt - license info about source fonts, used to build your one.
 
 - config.json - keeps your settings. You can import it back to fontello anytime,
-  to continue your work
+  to continue your credits
 
 
 Why so many CSS files ?

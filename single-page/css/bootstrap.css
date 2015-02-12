@@ -4567,24 +4567,24 @@ button.close {
  .navbar .nav > li {
  margin: 6px;
 }
- .skills .span5 {
+ .play .span5 {
  padding:10px !important;
 }
- .profile h2, .skills h2, .work h2, .resume h2 {
+ .home h2, .play h2, .credits h2, .blog h2 {
  text-align:center;
  margin:0 0 20px;
 }
-.resume h3 {
+.blog h3 {
 	text-align:center;
 	}
  .row {
  margin-top:20px;
 }
- ul.work-images {
+ ul.credits-images {
  text-align:center;
  margin-left:0;
  }
- ul.work-images li:first-child {
+ ul.credits-images li:first-child {
  margin:8px 10px !important;
  }
  .container-fluid {
@@ -4719,7 +4719,7 @@ button.close {
 ul, ol {
     margin: 0 0 10px;
 }
-ul.work-images li div {
+ul.credits-images li div {
 	width:222px;
 	}
  .row:before,  .row:after {

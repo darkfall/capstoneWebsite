@@ -5492,3 +5492,8 @@ ul.credits-images li div {
  overflow: visible !important;
 }
 }
+
+div#play {
+    margin: 0 0 0 0;
+    padding-top: 0px;
+}

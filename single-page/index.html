@@ -30,9 +30,10 @@
 
         </script>
         <script type="text/javascript">
+            var borderLength = 300;
 			var config = {
-				width: 960,
-				height: 600,
+				width: screen.width - borderLength,
+				height: screen.height - borderLength,
 				params: { enableDebugging:"0" }
 				,baseDownloadUrl: "http://webplayer.unity3d.com/download_webplayer-3.x/"
 			};
@@ -141,21 +142,6 @@
             </ul>
           </div>
             
-            <div class="content">
-                <div id="unityPlayer">
-                    <div class="missing">
-                        <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
-                            <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
-                        </a>
-                    </div>
-                    <div class="broken">
-                        <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
-                            <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-
         </div>
         <!-- Social Icons -->
         <!-- END: Social Icons -->
@@ -164,6 +150,21 @@
       <!--play container-->
       <div id="play" class="container">
           
+
+          <div class="content">
+              <div id="unityPlayer">
+                  <div class="missing">
+                      <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+                          <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+                      </a>
+                  </div>
+                  <div class="broken">
+                      <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
+                          <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+                      </a>
+                  </div>
+              </div>
+          </div>
 
 
           <!--Old Code-->
@@ -217,36 +218,59 @@
       <!--END: play container-->
       <!-- creditss container -->
       <div id="credits" class="container">
-        <h2>My credits</h2>
-        <ul class="credits-images">
-          <li>
-            <div><a class="fancybox-thumb" rel="fancybox-thumb" href="img/1.jpg" title="Image 01"><img src="img/1-thumb.jpg" /></a></div>
-          </li>
-          <li>
-            <div><a class="fancybox-thumb" rel="fancybox-thumb" href="img/2.jpg"><img src="img/2-thumb.jpg" /></a></div>
-          </li>
-          <li>
-            <div><a class="fancybox-thumb" rel="fancybox-thumb" href="img/3.jpg"><img src="img/3-thumb.jpg" /></a></div>
-          </li>
-        </ul>
-        <ul class="credits-images">
-          <li>
-            <div><a class="fancybox-thumb" rel="fancybox-thumb" href="img/4.jpg"><img src="img/4-thumb.jpg" /></a></div>
-          </li>
-          <li>
-            <div><a class="fancybox-thumb" rel="fancybox-thumb" href="img/5.jpg"><img src="img/5-thumb.jpg" /></a></div>
-          </li>
-          <li>
-            <div><a class="fancybox-thumb" rel="fancybox-thumb" href="img/6.jpg"><img src="img/6-thumb.jpg" /></a></div>
-          </li>
-        </ul>
+        <h2>Game Credits</h2>
+          <div class="row">
+              <div class="span3">
+                  <div class="ps">
+                      <h3>Design & Sound</h3>
+                  </div>
+              </div>
+              <div class="span5">
+                  <h3>Brian Clanton</h3>
+                  <!--<div class="expand-bg"> <span class="expand ps2"> &nbsp; </span> </div>-->
+              </div>
+              <span></span>
+          </div>
+          <div class="row">
+              <div class="span3">
+                  <div class="ai">
+                      <h3>Developer</h3>
+                  </div>
+              </div>
+              <div class="span5">
+                  <h3>Rushabh Gosar</h3>
+                  <!--<div class="expand-bg"> <span class="expand ai2"> &nbsp; </span> </div>-->
+              </div>
+          </div>
+          <div class="row">
+              <div class="span3">
+                  <div class="html">
+                      <h3>Developer</h3>
+                  </div>
+              </div>
+              <div class="span5">
+                  <h3>Ruiwei Bu</h3>
+                  <!--<div class="expand-bg"> <span class="expand html2"> &nbsp; </span> </div>-->
+              </div>
+          </div>
+          <div class="row">
+              <div class="span3">
+                  <div class="css">
+                      <h3>Developer</h3>
+                  </div>
+              </div>
+              <div class="span5">
+                  <h3>Leigh Raze</h3>
+                  <!--<div class="expand-bg"> <span class="expand css2"> &nbsp; </span> </div>-->
+              </div>
+          </div>
         <!--Dummy images by The Fox And King :: http://dribbble.com/snootyfox-->
       </div>
       <!--END: credits container-->
       <!-- blog container -->
       <div id="blog" class="container">
-        <h2>My blog</h2>
-        <h3>You can download my blog for your reference and I hope that we will meet very soon! :)</h3>
+        <h2>Blog</h2>
+        <h3>Check out our dev blog. </h3>
         <div class="btn-center"> <a href="#" class="hire-me"><i class="icon-download"></i> Download blog</a>
           <h2>125kb</h2>
         </div>
@@ -268,8 +292,8 @@
     <!-- Footer -->
     <div class="footer">
       <div class="container">
-        <p class="pull-left"><a href="http://dzyngiri.com">www.dzyngiri.com</a></p>
-        <p class="pull-right"><a href="##myModal" role="button" data-toggle="modal"> <i class="icon-mail"></i> CONTACT</a></p>
+        <p class="pull-left"><a href="http://dzyngiri.com">www.portfolios-go.here</a></p>
+        <p class="pull-right"><a href="##myModal" role="button" data-toggle="modal"> <i class="icon-mail"></i>rushabh.techie@gmail.com</a></p>
       </div>
     </div>
     <!-- Contact form in Modal -->
@@ -294,7 +318,7 @@
     <script src="js/vertical-scroll.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-               // $('#myModal').modal('hidden')
+                $('#myModal').modal('hidden')
     </script>
     </body>
     </html>

@@ -4569,8 +4569,14 @@ button.close {
 }
  .play .span5 {
  padding:10px !important;
+ margin: 0 0 0 300px;
 }
- .home h2, .play h2, .credits h2, .blog h2 {
+
+ .play h2 {
+     text-align: center;
+ }
+
+ .home h2,  .credits h2, .blog h2 {
  text-align:center;
  margin:0 0 20px;
 }

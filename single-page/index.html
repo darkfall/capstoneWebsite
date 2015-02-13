@@ -1,0 +1,332 @@
+﻿    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <title>Ambigious Utopia - The Game!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ambigious Utopia - The Game">
+        <meta name="keywords" content="Ambigious, Utopia, Unity 5, Tower Defense, C#">
+    <meta name="author" content="Rushabh™">
+    <meta name="description" content="">
+    <!-- styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/style-single-page.css" rel="stylesheet">
+    <link href="font/css/fontello.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <!-- Add fancyBox main JS and CSS files -->
+    <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <script type="text/javascript" src="js/text.js" />
+        <script type='text/javascript' src='https://ssl-webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/jquery.min.js'></script>
+        <script type="text/javascript">
+
+		var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
+		if (document.location.protocol == 'https:')
+			unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+		document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
+
+        </script>
+        <script type="text/javascript">
+
+            document.onload = onLoad();
+            function onLoad() {
+                var navBarTop = document.getElementById("navBarTop");
+                if (navBarTop != null)
+                    debug.log(navBarTop.clientWidth);
+
+            }
+            window.onresize = Resize()
+
+
+            function Resize() {
+                var config = {
+                    width: screen.width,
+                    height: screen.height - 125,
+                    params: { enableDebugging: "0" }
+                 , baseDownloadUrl: "http://webplayer.unity3d.com/download_webplayer-3.x/"
+                };
+
+                var u = new UnityObject2(config);
+                jQuery(function() {
+                    var $missingScreen = jQuery("#unityPlayer").find(".missing");
+                    var $brokenScreen = jQuery("#unityPlayer").find(".broken");
+                    $missingScreen.hide();
+                    $brokenScreen.hide();
+
+                    u.observeProgress(function (progress) {
+                        switch(progress.pluginStatus) {
+                            case "broken":
+                                $brokenScreen.find("a").click(function (e) {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    u.installPlugin();
+                                    return false;
+                                });
+                                $brokenScreen.show();
+                                break;
+                            case "missing":
+                                $missingScreen.find("a").click(function (e) {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    u.installPlugin();
+                                    return false;
+                                });
+                                $missingScreen.show();
+                                break;
+                            case "installed":
+                                $missingScreen.remove();
+                                break;
+                            case "first":
+                                break;
+                        }
+                    });
+                    u.initPlugin(jQuery("#unityPlayer")[0], "Web.unity3d");
+                });
+            }			
+        </script>
+
+
+    <script>      
+        $(document).ready(function() {
+        $(".fancybox-thumb").fancybox({
+            helpers	: {
+                title	: {
+                    type: 'inside'
+                },
+                overlay : {
+                            css : {
+                                'background' : 'rgba(1, 1, 1, 0.65)'
+                            }
+                        }
+            }
+        });
+    });
+    </script>
+
+
+
+    </head>
+    <body>
+    <div class="navbar navbar-fixed-top" id="navBarTop">
+      <div class="navbar-inner">
+        <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#home"><img src="img/user.jpg"/></a>
+          <ul class="nav nav-collapse pull-right">
+            <li><a href="#home"><i class="icon-user"></i> Home </a></li>
+            <li><a href="#play"><i class="icon-trophy"></i> Play </a></li>
+            <li><a href="#credits"><i class="icon-picture"></i> Credits </a></li>
+            <li><a href="#blog"><i class="icon-doc-text"></i> Blog </a></li>
+          </ul>
+          <!-- Everything you want hidden at 940px or less, place within here -->
+          <div class="nav-collapse collapse">
+            <!-- .nav, .navbar-search, .navbar-form, etc -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <!--home container-->
+      <div id="home" class="container">
+        <div class="span3"> <img src="img/mini.png"> </div>
+        <div class="span5">
+          <h1>[Ambigious Utopia]</h1>
+          <h3>Tower Defense game</h3>
+          <p> Ambiguous Utopia is an music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. </p>
+          <a href="#" class="hire-me"><i class="icon-paper-plane"></i> Hire Me </a>
+          
+            <div class="row social">
+            <ul class="social-icons">
+              <li><a href="#" target="_blank"><img src="img/fb.png" alt="facebook"></a></li>
+              <li><a href="#" target="_blank"><img src="img/tw.png" alt="twitter"></a></li>
+              <li><a href="#" target="_blank"><img src="img/go.png" alt="google plus"></a></li>
+              <li><a href="#" target="_blank"><img src="img/pin.png" alt="pinterest"></a></li>
+              <li><a href="#" target="_blank"><img src="img/st.png" alt="stumbleupon"></a></li>
+              <li><a href="#" target="_blank"><img src="img/dr.png" alt="dribbble"></a></li>
+            </ul>
+          </div>
+            
+        </div>
+        <!-- Social Icons -->
+        <!-- END: Social Icons -->
+      </div>
+      <!--END: home container-->
+      <!--play container-->
+        <div class="clearfix">
+            <div id="play" class="container">
+                <div class="content">
+                    <div id="unityPlayer" class="clearfix">
+                        <div class="missing">
+                            <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+                                <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+                            </a>
+                        </div>
+                        <div class="broken">
+                            <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
+                                <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Old Code-->
+                <!--<h2>My play</h2>
+            <div class="row">
+              <div class="span3">
+                <div class="ps">
+                  <h3>Ps</h3>
+                </div>
+              </div>
+              <div class="span5">
+                <h3>Photoshop <span>90%</span></h3>
+                <div class="expand-bg"> <span class="expand ps2"> &nbsp; </span> </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span3">
+                <div class="ai">
+                  <h3>Ai</h3>
+                </div>
+              </div>
+              <div class="span5">
+                <h3>Illustrator <span>80%</span></h3>
+                <div class="expand-bg"> <span class="expand ai2"> &nbsp; </span> </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span3">
+                <div class="html">
+                  <h3>HTML5</h3>
+                </div>
+              </div>
+              <div class="span5">
+                <h3>HTML5 <span>75%</span></h3>
+                <div class="expand-bg"> <span class="expand html2"> &nbsp; </span> </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span3">
+                <div class="css">
+                  <h3>CSS3</h3>
+                </div>
+              </div>
+              <div class="span5">
+                <h3>CSS3 <span>85%</span></h3>
+                <div class="expand-bg"> <span class="expand css2"> &nbsp; </span> </div>
+              </div>
+            </div>-->
+                <!--End of Old Code-->
+            </div>
+        </div>
+      <!--END: play container-->
+      <!-- creditss container -->
+      <div id="credits" class="container">
+        <h2>Game Credits</h2>
+          <div class="row">
+              <div class="span3">
+                  <div class="ps">
+                      <h3>Design & Sound</h3>
+                  </div>
+              </div>
+              <div class="span5">
+                  <h3>Brian Clanton</h3>
+                  <a href="http://brianclanton.com">http://brianclanton.com</a><p />
+                  <!--<div class="expand-bg"> <span class="expand ps2"> &nbsp; </span> </div>-->
+              </div>
+              <span></span>
+          </div>
+          <div class="row">
+              <div class="span3">
+                  <div class="ai">
+                      <h3>Developer</h3>
+                  </div>
+              </div>
+              <div class="span5">
+                  <h3>Rushabh Gosar</h3>
+                  <a href="http://rushg.me">http://rushg.me</a><p />
+                  <!--<div class="expand-bg"> <span class="expand ai2"> &nbsp; </span> </div>-->
+              </div>
+          </div>
+          <div class="row">
+              <div class="span3">
+                  <div class="html">
+                      <h3>Developer</h3>
+                  </div>
+              </div>
+              <div class="span5">
+                  <h3>Ruiwei Bu</h3>
+                  <a href="http://darkfall.me">http://darkfall.me</a><p />
+                  <!--<div class="expand-bg"> <span class="expand html2"> &nbsp; </span> </div>-->
+              </div>
+          </div>
+          <div class="row">
+              <div class="span3">
+                  <div class="css">
+                      <h3>Developer</h3>
+                  </div>
+              </div>
+              <div class="span5">
+                  <h3>Leigh Raze</h3>
+                  <!--<div class="expand-bg"> <span class="expand css2"> &nbsp; </span> </div>-->
+              </div>
+          </div>
+        <!--Dummy images by The Fox And King :: http://dribbble.com/snootyfox-->
+      </div>
+      <!--END: credits container-->
+      <!-- blog container -->
+      <div id="blog" class="container">
+        <h2>Blog</h2>
+        <h3>Check out our dev blog. </h3>
+        <div class="btn-center"> <a href="#" class="hire-me"><i class="icon-download"></i> Download blog</a>
+          <h2>125kb</h2>
+        </div>
+      </div>
+      <!--END: blog container-->
+      <!-- Social Icons -->
+      <div class="row social">
+        <ul class="social-icons">
+          <li><a href="#" target="_blank"><img src="img/fb.png" alt="facebook"></a></li>
+          <li><a href="#" target="_blank"><img src="img/tw.png" alt="twitter"></a></li>
+          <li><a href="#" target="_blank"><img src="img/go.png" alt="google plus"></a></li>
+          <li><a href="#" target="_blank"><img src="img/pin.png" alt="pinterest"></a></li>
+          <li><a href="#" target="_blank"><img src="img/st.png" alt="stumbleupon"></a></li>
+          <li><a href="#" target="_blank"><img src="img/dr.png" alt="dribbble"></a></li>
+        </ul>
+      </div>
+      <!-- END: Social Icons -->
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+      <div class="container">
+        <p class="pull-left"><a href="http://igmcapsone.cloudapp.net">www.portfolios-go.here</a></p>
+        <p class="pull-right"><a href="##myModal" role="button" data-toggle="modal"> <i class="icon-mail"></i>rushabh.techie@gmail.com</a></p>
+      </div>
+    </div>
+    <!-- Contact form in Modal -->
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel"><i class="icon-mail"></i> Contact Me</h3>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="text" placeholder="Yopur Name">
+          <input type="text" placeholder="Your Email">
+          <input type="text" placeholder="Website (Optional)">
+          <textarea rows="3" style="width:80%"></textarea>
+          <br/>
+          <button type="submit" class="btn btn-large"><i class="icon-paper-plane"></i> SUBMIT</button>
+        </form>
+      </div>
+    </div>
+    <!-- Scripts -->
+    <script src="js/vertical-scroll.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+         //  $('#myModal').modal('hidden')
+    </script>
+    </body>
+    </html>

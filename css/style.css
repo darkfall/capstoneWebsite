@@ -4,10 +4,10 @@ a.brand img {
 	border-radius:50%;
 	border:5px solid #fff;
 }
-.home, .play, .credits, .blog {
+.home, .play, .credits, .blog, .about {
 	padding:30px 0;
 }
-.home h2, .play h2, .credits h2, .blog h2 {
+.home h2, .play h2, .credits h2, .blog h2, .about h2 {
 	font-weight:normal;
 	color: #39D084;
 }
@@ -98,7 +98,7 @@ ul.social-icons li a:hover {
 	background:#ee742b;
 }
 .play .html {
-	background:#f04949;
+	background:#39d084;
 }
 .play .css {
 	background:#39d084;
@@ -253,6 +253,13 @@ ul.credits-images li img {
 }
 ul.credits-images li img:hover {
 	opacity:0.1;
+}
+.about h3 {
+    margin:60px 0;
+}
+
+.about .btn-center {
+    text-align: center;
 }
 /***** blog container *****/
 .blog h3 {

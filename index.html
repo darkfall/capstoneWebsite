@@ -29,6 +29,8 @@
 		document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
 
         </script>
+
+
         <script type="text/javascript">
 
             document.onload = onLoad();
@@ -106,7 +108,20 @@
     });
     </script>
 
+        <script>
+            function onHover(id, set) {
 
+                var elem = document.getElementById(id);
+                if (set) {
+                    elem.style.color = "red";
+                    elem.style.textShadow = " 0 1px 2px rgba(0, 0, 0, .6)";
+                }
+                else {
+                    elem.style.color = "white";
+                    elem.style.textShadow = "none";
+                }
+            }
+        </script>
 
     </head>
     <body>
@@ -114,10 +129,11 @@
       <div class="navbar-inner">
         <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#home"><img src="img/user.jpg"/></a>
           <ul class="nav nav-collapse pull-right">
-            <li><a href="#home"><i class="icon-user"></i> Home </a></li>
+            <li><a href="#home"><i class="icon-home"></i> Home </a></li>
             <li><a href="#play"><i class="icon-trophy"></i> Play </a></li>
             <li><a href="#credits"><i class="icon-picture"></i> Credits </a></li>
             <li><a href="#blog"><i class="icon-doc-text"></i> Blog </a></li>
+            <!--<li><a href="#about"><i class="icon-doc-text"></i> About </a></li>-->
           </ul>
           <!-- Everything you want hidden at 940px or less, place within here -->
           <div class="nav-collapse collapse">
@@ -129,22 +145,26 @@
     <div class="clearfix">
       <!--home container-->
       <div id="home" class="container">
-        <div class="span3"> <img src="img/mini.png"> </div>
-        <div class="span5">
+        <!--<div class="span3"> <img src="img/mini.png"> </div>-->
+        <div class="span12">
           <h1>[Ambigious Utopia]</h1>
           <h3>Tower Defense game</h3>
-          <p> Ambiguous Utopia is an music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. </p>
-          <a href="#" class="hire-me"><i class="icon-paper-plane"></i> Hire Me </a>
+          <p> Ambiguous Utopia is an music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. <br />## Possible One page doc comes here ##
+              <br />Ambiguous Utopia (working title) is a music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. Players work to defend the core of their musical idea from an onslaught of enemies by deterring them by using a variety of ranged weapons and placing attacking towers to increase their defenses.
+              This document will start by going into some of the research that led us to our final game idea and research that helped inform design decisions behind the game. Next, we will explain our development process. This will include the tools that we used to improve our communication and organization, as well as what we used for the more technical aspects of development, such as version control and our build server. We will then discuss the design decisions we ended up making based on our research and also observations during development and playtesting.  After that, we will go into detail of our technical innovations, including the extensive tool base we created for the Unity editor to optimize our workflow. Finally, we will discuss results we found from playtesting and conclude with a postmortem of our capstone project.
+ 
+           </p>
+          <a href="#" class="hire-me"><i class="fa fa-spinner fa-spin"></i> Play </a>
           
             <div class="row social">
-            <ul class="social-icons">
+            <!--<ul class="social-icons">
               <li><a href="#" target="_blank"><img src="img/fb.png" alt="facebook"></a></li>
               <li><a href="#" target="_blank"><img src="img/tw.png" alt="twitter"></a></li>
               <li><a href="#" target="_blank"><img src="img/go.png" alt="google plus"></a></li>
               <li><a href="#" target="_blank"><img src="img/pin.png" alt="pinterest"></a></li>
               <li><a href="#" target="_blank"><img src="img/st.png" alt="stumbleupon"></a></li>
               <li><a href="#" target="_blank"><img src="img/dr.png" alt="dribbble"></a></li>
-            </ul>
+            </ul>-->
           </div>
             
         </div>
@@ -154,7 +174,7 @@
       <!--END: home container-->
       <!--play container-->
         <div class="clearfix">
-            <div id="play" class="container">
+            <!--<div id="play" class="container">
                 <div class="content">
                     <div id="unityPlayer" class="clearfix">
                         <div class="missing">
@@ -168,7 +188,7 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
 
                 <!--Old Code-->
@@ -224,7 +244,7 @@
       <!-- creditss container -->
       <div id="credits" class="container">
         <h2>Game Credits</h2>
-          <div class="row">
+          <div class="row" id="brian" onmouseover="onHover('brian', true)" onmouseout=" onHover('brian', false)">
               <div class="span3">
                   <div class="ps">
                       <h3>Design & Sound</h3>
@@ -237,19 +257,19 @@
               </div>
               <span></span>
           </div>
-          <div class="row">
-              <div class="span3">
-                  <div class="ai">
-                      <h3>Developer</h3>
-                  </div>
+          <div class="row" id="rushabh" onmouseover="onHover('rushabh', true)" onmouseout="onHover('rushabh', false)">
+              <div class=" span3">
+              <div class="ai">
+                  <h3>Developer</h3>
               </div>
+          </div>
               <div class="span5">
                   <h3>Rushabh Gosar</h3>
                   <a href="http://rushg.me">http://rushg.me</a><p />
                   <!--<div class="expand-bg"> <span class="expand ai2"> &nbsp; </span> </div>-->
               </div>
           </div>
-          <div class="row">
+          <div class="row" id="ruiwei" onmouseover="onHover('ruiwei', true)" onmouseout="    onHover('ruiwei', false)">
               <div class="span3">
                   <div class="html">
                       <h3>Developer</h3>
@@ -261,7 +281,7 @@
                   <!--<div class="expand-bg"> <span class="expand html2"> &nbsp; </span> </div>-->
               </div>
           </div>
-          <div class="row">
+          <div class="row" id="leigh" onmouseover="onHover('leigh', true)" onmouseout="    onHover('leigh', false)">
               <div class="span3">
                   <div class="css">
                       <h3>Developer</h3>
@@ -279,8 +299,8 @@
       <div id="blog" class="container">
         <h2>Blog</h2>
         <h3>Check out our dev blog. </h3>
-        <div class="btn-center"> <a href="#" class="hire-me"><i class="icon-download"></i> Download blog</a>
-          <h2>125kb</h2>
+        <div class="btn-center"> <a href="#" class="hire-me"><i class="icon-download"></i> View Blog</a>
+          <!--<h2>125kb</h2>-->
         </div>
       </div>
       <!--END: blog container-->

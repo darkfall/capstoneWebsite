@@ -2838,7 +2838,8 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 	min-height: 40px;
 	padding-left: 20px;
 	padding-right: 20px;
-	background-color: #f04949;
+	background-color: #39d084;
+;
  *zoom: 1;
 }
 .navbar-inner:before, .navbar-inner:after {
@@ -4576,10 +4577,13 @@ button.close {
      text-align: center;
  }
 
- .home h2,  .credits h2, .blog h2 {
+ .home h2,  .credits h2, .blog h2 .about h2 {
  text-align:center;
  margin:0 0 20px;
 }
+ about h3 {
+     text-align:center;
+ }
 .blog h3 {
 	text-align:center;
 	}

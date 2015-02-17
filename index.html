@@ -13,6 +13,7 @@
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/style-single-page.css" rel="stylesheet">
     <link href="font/css/fontello.css" rel="stylesheet">
+    <link href="css/sliderStyle.css" rel="stylesheet" >    
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
     <!-- Add jQuery library -->
     <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
@@ -20,95 +21,48 @@
     <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.5"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />
     <script type="text/javascript" src="js/text.js" />
-        <script type='text/javascript' src='https://ssl-webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/jquery.min.js'></script>
-        <script type="text/javascript">
-
-		var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
-		if (document.location.protocol == 'https:')
-			unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
-		document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
-
-        </script>
-
-
-        <script type="text/javascript">
-
-            document.onload = onLoad();
-            function onLoad() {
-                var navBarTop = document.getElementById("navBarTop");
-                if (navBarTop != null)
-                    debug.log(navBarTop.clientWidth);
-
+    <script type='text/javascript' src='https://ssl-webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/jquery.min.js'></script>
+  
+    <script type="text/javascript">   
+            function TimeLineClicked(controlName, flag) {
+                var control = document.getElementById(controlName);
+                if (control) {
+                    if (flag) updateSlider(items.length);
+                    else updateSlider(1);
+                    
+                }
             }
-            window.onresize = Resize()
-
-
-            function Resize() {
-                var config = {
-                    width: screen.width,
-                    height: screen.height - 125,
-                    params: { enableDebugging: "0" }
-                 , baseDownloadUrl: "http://webplayer.unity3d.com/download_webplayer-3.x/"
-                };
-
-                var u = new UnityObject2(config);
-                jQuery(function() {
-                    var $missingScreen = jQuery("#unityPlayer").find(".missing");
-                    var $brokenScreen = jQuery("#unityPlayer").find(".broken");
-                    $missingScreen.hide();
-                    $brokenScreen.hide();
-
-                    u.observeProgress(function (progress) {
-                        switch(progress.pluginStatus) {
-                            case "broken":
-                                $brokenScreen.find("a").click(function (e) {
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                    u.installPlugin();
-                                    return false;
-                                });
-                                $brokenScreen.show();
-                                break;
-                            case "missing":
-                                $missingScreen.find("a").click(function (e) {
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                    u.installPlugin();
-                                    return false;
-                                });
-                                $missingScreen.show();
-                                break;
-                            case "installed":
-                                $missingScreen.remove();
-                                break;
-                            case "first":
-                                break;
-                        }
-                    });
-                    u.initPlugin(jQuery("#unityPlayer")[0], "Web.unity3d");
-                });
-            }
+            var id = 0;
             function updateSlider(slideAmount) {
-                slideAmount = slideAmount - 1;
-                var sliderDiv = document.getElementById("sliderAmount");
-                var id = slideAmount % items.length;
-                sliderDiv.innerHTML = items[id];
+                console.log("IN");
+                var slider = document.getElementById("slide");
+                if (slideAmount >= 0) {                   
+                    id = slideAmount ;
+                    var sliderDiv = document.getElementById("sliderAmount");
+                   /// id = (slideAmount) % ( items.length + 1 );
+                    console.log(id);
+                    sliderDiv.innerHTML = items[id];
+                    slider.value = id;
+                }
             }
 
-            function sliderLoaded(slider) {
+            function sliderLoaded(slider, update) {
                 var sliderControl = document.getElementById(slider);
+                sliderControl.style.width = "100%";
                 if (items.length > 0) {
-                    sliderControl.max = items.length + 1;
-                    sliderControl.val = 1;
-                    sliderControl.min = 1;
+                    sliderControl.max = items.length - 1;
+                    sliderControl.val = id;
+                    sliderControl.min = 0;
                     sliderControl.step = 1;
-                    updateSlider(1);
                 }
                 else
                     sliderControl.hide = true;
+                if ( update ) 
+                    updateSlider(id);
             }
-
+        /// Holds all the items of the blog. 
             var items = [];
+        /// End Collection
             $.ajax({
                 url: "http://104.236.196.27/feed/json",
                 dataType: "jsonp",
@@ -119,34 +73,29 @@
                     for (i = 0; i < $xJSON.length; i++) {
                         var entry = $xJSON[i];
                         var t = entry['title'];
-                        items.push('<div><h3>' + entry['title'] + '</h3><p><small>Published by ' + entry['author'].trim() + ' on ' + entry['date'].trim() + '</small></h3>' + entry['content'] + '</div><hr />');
+                        items.push('<div><h3><b>' + entry['title'] + '</b></h3><small>Published by ' + entry['author'].trim() + ' on ' + entry['date'].trim() + '</small></h3> <div style="text-align:left">' + entry['content'] + '</div></div><hr />');
                     }
                     $("#displayDiv").html(items.join(''));
+                    console.log(items);
+                    items.reverse(); //For chronological purposes
                 }
             });
         </script>
-
-        <script>
-           
-        </script>
-    <script>      
-        $(document).ready(function() {
-        $(".fancybox-thumb").fancybox({
-            helpers	: {
-                title	: {
-                    type: 'inside'
-                },
-                overlay : {
-                            css : {
-                                'background' : 'rgba(1, 1, 1, 0.65)'
+        <script>      
+            $(document).ready(function() {
+            $(".fancybox-thumb").fancybox({
+                helpers	: {
+                    title	: {
+                        type: 'inside'
+                    },
+                    overlay : {
+                                css : {
+                                    'background' : 'rgba(1, 1, 1, 0.65)'
+                                }
                             }
-                        }
-            }
-        });
-    });
-    </script>
-
-        <script>
+                }
+            });
+            });
             function onHover(id, set) {
 
                 var elem = document.getElementById(id);
@@ -162,7 +111,7 @@
         </script>
 
     </head>
-    <body onload="sliderLoaded('slide');">
+    <body onload="sliderLoaded('slide', true);">
         <div class="navbar navbar-fixed-top" id="navBarTop">
             <div class="navbar-inner">
                 <div class="container">
@@ -210,72 +159,6 @@
                 </div>
                 <!-- Social Icons -->
                 <!-- END: Social Icons -->
-            </div>
-            <!--END: home container-->
-            <!--play container-->
-            <div class="clearfix">
-                <!--<div id="play" class="container">
-                <div class="content">
-                    <div id="unityPlayer" class="clearfix">
-                        <div class="missing">
-                            <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
-                                <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
-                            </a>
-                        </div>
-                        <div class="broken">
-                            <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
-                                <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
-                            </a>
-                        </div>
-                    </div>
-                </div>-->
-                <!--Old Code-->
-                <!--<h2>My play</h2>
-            <div class="row">
-              <div class="span3">
-                <div class="ps">
-                  <h3>Ps</h3>
-                </div>
-              </div>
-              <div class="span5">
-                <h3>Photoshop <span>90%</span></h3>
-                <div class="expand-bg"> <span class="expand ps2"> &nbsp; </span> </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="span3">
-                <div class="ai">
-                  <h3>Ai</h3>
-                </div>
-              </div>
-              <div class="span5">
-                <h3>Illustrator <span>80%</span></h3>
-                <div class="expand-bg"> <span class="expand ai2"> &nbsp; </span> </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="span3">
-                <div class="html">
-                  <h3>HTML5</h3>
-                </div>
-              </div>
-              <div class="span5">
-                <h3>HTML5 <span>75%</span></h3>
-                <div class="expand-bg"> <span class="expand html2"> &nbsp; </span> </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="span3">
-                <div class="css">
-                  <h3>CSS3</h3>
-                </div>
-              </div>
-              <div class="span5">
-                <h3>CSS3 <span>85%</span></h3>
-                <div class="expand-bg"> <span class="expand css2"> &nbsp; </span> </div>
-              </div>
-            </div>-->
-                <!--End of Old Code-->
             </div>
         </div>
         <!--END: play container-->
@@ -335,17 +218,21 @@
         <!--END: credits container-->
         <!-- blog container -->
         <div id="blog" class="container" onload="sliderLoaded('slide')">
-            <h2>Blog</h2>
-            <h3> Live Feed </h3>
-            <div class="btn-center">
-                '
-                <input id="slide" type="range" onmouseover="sliderLoaded('slide')" onload="    sliderLoaded('slide')" onchange="    updateSlider(this.value)">
-                <div id="sliderAmount"></div>
-                <a href="#" class="hire-me"><i class="icon-download"></i> View Full Blog </a>
-
-                <!--<h2>125kb</h2>-->
+            <div>
+                <h2>Blog</h2>
+                <div class="btn-center">
+                    <div class="container-fluid">
+                        <label style="text-align: left; text-shadow: 1px 1px 1px;" onclick="TimeLineClicked('slide', false)">August 2014</label>
+                        <input type="range" class="bar" id="slide" style="align-content: stretch; width: 5px; height: 5px; -webkit-box-shadow: 0px 0px 10px 1px; box-shadow: 0px 0px 10px 1px;" onchange="updateSlider(this.value)" onmouseover="sliderLoaded('slide', false)" onload="sliderLoaded('slide')">
+                        <label style="text-align:right;  text-shadow: 1px 1px 1px;" onclick="TimeLineClicked('slide', true)">March 2015</label>
+                    </div>
+                </div>
             </div>
+            <div id="sliderAmount"></div>
+            <a href="#" class="hire-me"><i class="icon-download"></i> View Full Blog </a>
         </div>
+
+
         <!--END: blog container-->
         <!-- Social Icons -->
         <div class="row social">
@@ -384,6 +271,7 @@
                     <button type="submit" class="btn btn-large"><i class="icon-paper-plane"></i> SUBMIT</button>
                 </form>
             </div>
+
         </div>
         <!-- Scripts -->
         <script src="js/vertical-scroll.js"></script>

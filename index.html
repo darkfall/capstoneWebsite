@@ -20,20 +20,18 @@
     <!-- Add fancyBox main JS and CSS files -->
     <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.5"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />
-    <script type="text/javascript" src="js/text.js" />
-  
-    <script type="text/javascript">   
+
+    <script>   
             function TimeLineClicked(controlName, flag) {
                 var control = document.getElementById(controlName);
                 if (control) {
                     if (flag) updateSlider(items.length);
-                    else updateSlider(1);
-                    
+                    else updateSlider(1);                    
                 }
             }
             var id = 0;
             function updateSlider(slideAmount) {
-                console.log("IN");
+                
                 var slider = document.getElementById("slide");
                 if (slideAmount >= 0) {                   
                     id = slideAmount ;
@@ -45,7 +43,16 @@
                 }
             }
 
-            function sliderLoaded(slider, update){ 
+        this.onload = 
+            function onLoad() {
+                sliderLoaded('slide', true);
+            }
+
+            function sliderLoaded(slider) {
+                sliderLoaded(slider, true);
+            }
+
+            function sliderLoaded(slider, update) { 
                 var sliderControl = document.getElementById(slider);
                 sliderControl.style.width = "100%";
                 if (items.length > 0) {
@@ -80,20 +87,20 @@
                 }
             });
         </script>
-        <script>      
+    <script>      
             $(document).ready(function() {
-            $(".fancybox-thumb").fancybox({
-                helpers	: {
-                    title	: {
-                        type: 'inside'
-                    },
-                    overlay : {
-                                css : {
-                                    'background' : 'rgba(1, 1, 1, 0.65)'
+                $(".fancybox-thumb").fancybox({
+                    helpers	: {
+                        title	: {
+                            type: 'inside'
+                        },
+                        overlay : {
+                                    css : {
+                                        'background' : 'rgba(1, 1, 1, 0.65)'
+                                    }
                                 }
-                            }
-                }
-            });
+                    }
+                });
             });
             function onHover(id, set) {
 
@@ -108,9 +115,8 @@
                 }
             }
         </script>
-
     </head>
-    <body onload="sliderLoaded('slide', true);">
+    <body>
         <div class="navbar navbar-fixed-top" id="navBarTop">
             <div class="navbar-inner">
                 <div class="container">
@@ -143,18 +149,6 @@
 
                     </p>
                     <a href="demo/Web/Web.html" class="hire-me"><i class="fa fa-spinner fa-spin"></i> Play </a>
-
-                    <div class="row social">
-                        <!--<ul class="social-icons">
-                      <li><a href="#" target="_blank"><img src="img/fb.png" alt="facebook"></a></li>
-                      <li><a href="#" target="_blank"><img src="img/tw.png" alt="twitter"></a></li>
-                      <li><a href="#" target="_blank"><img src="img/go.png" alt="google plus"></a></li>
-                      <li><a href="#" target="_blank"><img src="img/pin.png" alt="pinterest"></a></li>
-                      <li><a href="#" target="_blank"><img src="img/st.png" alt="stumbleupon"></a></li>
-                      <li><a href="#" target="_blank"><img src="img/dr.png" alt="dribbble"></a></li>
-                    </ul>-->
-                    </div>
-
                 </div>
                 <!-- Social Icons -->
                 <!-- END: Social Icons -->
@@ -189,7 +183,7 @@
                     <!--<div class="expand-bg"> <span class="expand ai2"> &nbsp; </span> </div>-->
                 </div>
             </div>
-            <div class="row" id="ruiwei" onmouseover="onHover('ruiwei', true)" onmouseout="    onHover('ruiwei', false)">
+            <div class="row" id="ruiwei" onmouseover="onHover('ruiwei', true)" onmouseout="onHover('ruiwei', false)">
                 <div class="span3">
                     <div class="html">
                         <h3>Developer</h3>
@@ -201,7 +195,7 @@
                     <!--<div class="expand-bg"> <span class="expand html2"> &nbsp; </span> </div>-->
                 </div>
             </div>
-            <div class="row" id="leigh" onmouseover="onHover('leigh', true)" onmouseout="    onHover('leigh', false)">
+            <div class="row" id="leigh" onmouseover="onHover('leigh', true)" onmouseout="onHover('leigh', false)">
                 <div class="span3">
                     <div class="css">
                         <h3>Developer</h3>

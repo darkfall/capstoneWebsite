@@ -6,6 +6,7 @@ a.brand img {
 }
 .home, .play, .credits, .blog, .about {
 	padding:30px 0;
+    margin-left: -100px;
 }
 .home h2, .play h2, .credits h2, .blog h2, .about h2 {
 	font-weight:normal;

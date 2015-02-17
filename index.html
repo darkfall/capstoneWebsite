@@ -87,10 +87,48 @@
                     });
                     u.initPlugin(jQuery("#unityPlayer")[0], "Web.unity3d");
                 });
-            }			
+            }
+            function updateSlider(slideAmount) {
+                slideAmount = slideAmount - 1;
+                var sliderDiv = document.getElementById("sliderAmount");
+                var id = slideAmount % items.length;
+                sliderDiv.innerHTML = items[id];
+            }
+
+            function sliderLoaded(slider) {
+                var sliderControl = document.getElementById(slider);
+                if (items.length > 0) {
+                    sliderControl.max = items.length + 1;
+                    sliderControl.val = 1;
+                    sliderControl.min = 1;
+                    sliderControl.step = 1;
+                    updateSlider(1);
+                }
+                else
+                    sliderControl.hide = true;
+            }
+
+            var items = [];
+            $.ajax({
+                url: "http://104.236.196.27/feed/json",
+                dataType: "jsonp",
+                success: function (data) {
+                    console.log(data);
+                    var $xJSON = ($(data))
+
+                    for (i = 0; i < $xJSON.length; i++) {
+                        var entry = $xJSON[i];
+                        var t = entry['title'];
+                        items.push('<div><h3>' + entry['title'] + '</h3><p><small>Published by ' + entry['author'].trim() + ' on ' + entry['date'].trim() + '</small></h3>' + entry['content'] + '</div><hr />');
+                    }
+                    $("#displayDiv").html(items.join(''));
+                }
+            });
         </script>
 
-
+        <script>
+           
+        </script>
     <script>      
         $(document).ready(function() {
         $(".fancybox-thumb").fancybox({
@@ -124,57 +162,59 @@
         </script>
 
     </head>
-    <body>
-    <div class="navbar navbar-fixed-top" id="navBarTop">
-      <div class="navbar-inner">
-        <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#home"><img src="img/user.jpg"/></a>
-          <ul class="nav nav-collapse pull-right">
-            <li><a href="#home"><i class="icon-home"></i> Home </a></li>
-            <li><a href="#play"><i class="icon-trophy"></i> Play </a></li>
-            <li><a href="#credits"><i class="icon-picture"></i> Credits </a></li>
-            <li><a href="#blog"><i class="icon-doc-text"></i> Blog </a></li>
-            <!--<li><a href="#about"><i class="icon-doc-text"></i> About </a></li>-->
-          </ul>
-          <!-- Everything you want hidden at 940px or less, place within here -->
-          <div class="nav-collapse collapse">
-            <!-- .nav, .navbar-search, .navbar-form, etc -->
-          </div>
+    <body onload="sliderLoaded('slide');">
+        <div class="navbar navbar-fixed-top" id="navBarTop">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#home"><img src="img/user.jpg" /></a>
+                    <ul class="nav nav-collapse pull-right">
+                        <li><a href="#home"><i class="icon-home"></i> Home </a></li>
+                        <li><a href="#play"><i class="icon-trophy"></i> Play </a></li>
+                        <li><a href="#credits"><i class="icon-picture"></i> Credits </a></li>
+                        <li><a href="#blog"><i class="icon-doc-text"></i> Blog </a></li>
+                        <!--<li><a href="#about"><i class="icon-doc-text"></i> About </a></li>-->
+                    </ul>
+                    <!-- Everything you want hidden at 940px or less, place within here -->
+                    <div class="nav-collapse collapse">
+                        <!-- .nav, .navbar-search, .navbar-form, etc -->
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="clearfix">
-      <!--home container-->
-      <div id="home" class="container">
-        <!--<div class="span3"> <img src="img/mini.png"> </div>-->
-        <div class="span12">
-          <h1>[Ambigious Utopia]</h1>
-          <h3>Tower Defense game</h3>
-          <p> Ambiguous Utopia is an music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. <br />## Possible One page doc comes here ##
-              <br />Ambiguous Utopia (working title) is a music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. Players work to defend the core of their musical idea from an onslaught of enemies by deterring them by using a variety of ranged weapons and placing attacking towers to increase their defenses.
-              This document will start by going into some of the research that led us to our final game idea and research that helped inform design decisions behind the game. Next, we will explain our development process. This will include the tools that we used to improve our communication and organization, as well as what we used for the more technical aspects of development, such as version control and our build server. We will then discuss the design decisions we ended up making based on our research and also observations during development and playtesting.  After that, we will go into detail of our technical innovations, including the extensive tool base we created for the Unity editor to optimize our workflow. Finally, we will discuss results we found from playtesting and conclude with a postmortem of our capstone project.
- 
-           </p>
-          <a href="#" class="hire-me"><i class="fa fa-spinner fa-spin"></i> Play </a>
-          
-            <div class="row social">
-            <!--<ul class="social-icons">
-              <li><a href="#" target="_blank"><img src="img/fb.png" alt="facebook"></a></li>
-              <li><a href="#" target="_blank"><img src="img/tw.png" alt="twitter"></a></li>
-              <li><a href="#" target="_blank"><img src="img/go.png" alt="google plus"></a></li>
-              <li><a href="#" target="_blank"><img src="img/pin.png" alt="pinterest"></a></li>
-              <li><a href="#" target="_blank"><img src="img/st.png" alt="stumbleupon"></a></li>
-              <li><a href="#" target="_blank"><img src="img/dr.png" alt="dribbble"></a></li>
-            </ul>-->
-          </div>
-            
-        </div>
-        <!-- Social Icons -->
-        <!-- END: Social Icons -->
-      </div>
-      <!--END: home container-->
-      <!--play container-->
         <div class="clearfix">
-            <!--<div id="play" class="container">
+            <!--home container-->
+            <div id="home" class="container">
+                <!--<div class="span3"> <img src="img/mini.png"> </div>-->
+                <div class="span12">
+                    <h1>[Ambigious Utopia]</h1>
+                    <h3>Tower Defense game</h3>
+                    <p>
+                        Ambiguous Utopia is an music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. <br />## Possible One page doc comes here ##
+                        <br />Ambiguous Utopia (working title) is a music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. Players work to defend the core of their musical idea from an onslaught of enemies by deterring them by using a variety of ranged weapons and placing attacking towers to increase their defenses.
+                        This document will start by going into some of the research that led us to our final game idea and research that helped inform design decisions behind the game. Next, we will explain our development process. This will include the tools that we used to improve our communication and organization, as well as what we used for the more technical aspects of development, such as version control and our build server. We will then discuss the design decisions we ended up making based on our research and also observations during development and playtesting.  After that, we will go into detail of our technical innovations, including the extensive tool base we created for the Unity editor to optimize our workflow. Finally, we will discuss results we found from playtesting and conclude with a postmortem of our capstone project.
+
+                    </p>
+                    <a href="#" class="hire-me"><i class="fa fa-spinner fa-spin"></i> Play </a>
+
+                    <div class="row social">
+                        <!--<ul class="social-icons">
+                      <li><a href="#" target="_blank"><img src="img/fb.png" alt="facebook"></a></li>
+                      <li><a href="#" target="_blank"><img src="img/tw.png" alt="twitter"></a></li>
+                      <li><a href="#" target="_blank"><img src="img/go.png" alt="google plus"></a></li>
+                      <li><a href="#" target="_blank"><img src="img/pin.png" alt="pinterest"></a></li>
+                      <li><a href="#" target="_blank"><img src="img/st.png" alt="stumbleupon"></a></li>
+                      <li><a href="#" target="_blank"><img src="img/dr.png" alt="dribbble"></a></li>
+                    </ul>-->
+                    </div>
+
+                </div>
+                <!-- Social Icons -->
+                <!-- END: Social Icons -->
+            </div>
+            <!--END: home container-->
+            <!--play container-->
+            <div class="clearfix">
+                <!--<div id="play" class="container">
                 <div class="content">
                     <div id="unityPlayer" class="clearfix">
                         <div class="missing">
@@ -189,8 +229,6 @@
                         </div>
                     </div>
                 </div>-->
-
-
                 <!--Old Code-->
                 <!--<h2>My play</h2>
             <div class="row">
@@ -240,113 +278,118 @@
                 <!--End of Old Code-->
             </div>
         </div>
-      <!--END: play container-->
-      <!-- creditss container -->
-      <div id="credits" class="container">
-        <h2>Game Credits</h2>
-          <div class="row" id="brian" onmouseover="onHover('brian', true)" onmouseout=" onHover('brian', false)">
-              <div class="span3">
-                  <div class="ps">
-                      <h3>Design & Sound</h3>
-                  </div>
-              </div>
-              <div class="span5">
-                  <h3>Brian Clanton</h3>
-                  <a href="http://brianclanton.com">http://brianclanton.com</a><p />
-                  <!--<div class="expand-bg"> <span class="expand ps2"> &nbsp; </span> </div>-->
-              </div>
-              <span></span>
-          </div>
-          <div class="row" id="rushabh" onmouseover="onHover('rushabh', true)" onmouseout="onHover('rushabh', false)">
-              <div class=" span3">
-              <div class="ai">
-                  <h3>Developer</h3>
-              </div>
-          </div>
-              <div class="span5">
-                  <h3>Rushabh Gosar</h3>
-                  <a href="http://rushg.me">http://rushg.me</a><p />
-                  <!--<div class="expand-bg"> <span class="expand ai2"> &nbsp; </span> </div>-->
-              </div>
-          </div>
-          <div class="row" id="ruiwei" onmouseover="onHover('ruiwei', true)" onmouseout="    onHover('ruiwei', false)">
-              <div class="span3">
-                  <div class="html">
-                      <h3>Developer</h3>
-                  </div>
-              </div>
-              <div class="span5">
-                  <h3>Ruiwei Bu</h3>
-                  <a href="http://darkfall.me">http://darkfall.me</a><p />
-                  <!--<div class="expand-bg"> <span class="expand html2"> &nbsp; </span> </div>-->
-              </div>
-          </div>
-          <div class="row" id="leigh" onmouseover="onHover('leigh', true)" onmouseout="    onHover('leigh', false)">
-              <div class="span3">
-                  <div class="css">
-                      <h3>Developer</h3>
-                  </div>
-              </div>
-              <div class="span5">
-                  <h3>Leigh Raze</h3>
-                  <!--<div class="expand-bg"> <span class="expand css2"> &nbsp; </span> </div>-->
-              </div>
-          </div>
-        <!--Dummy images by The Fox And King :: http://dribbble.com/snootyfox-->
-      </div>
-      <!--END: credits container-->
-      <!-- blog container -->
-      <div id="blog" class="container">
-        <h2>Blog</h2>
-        <h3>Check out our dev blog. </h3>
-        <div class="btn-center"> <a href="#" class="hire-me"><i class="icon-download"></i> View Blog</a>
-          <!--<h2>125kb</h2>-->
+        <!--END: play container-->
+        <!-- creditss container -->
+        <div id="credits" class="container">
+            <h2>Game Credits</h2>
+            <div class="row" id="brian" onmouseover="onHover('brian', true)" onmouseout=" onHover('brian', false)">
+                <div class="span3">
+                    <div class="ps">
+                        <h3>Design & Sound</h3>
+                    </div>
+                </div>
+                <div class="span5">
+                    <h3>Brian Clanton</h3>
+                    <a href="http://brianclanton.com">http://brianclanton.com</a><p />
+                    <!--<div class="expand-bg"> <span class="expand ps2"> &nbsp; </span> </div>-->
+                </div>
+                <span></span>
+            </div>
+            <div class="row" id="rushabh" onmouseover="onHover('rushabh', true)" onmouseout="onHover('rushabh', false)">
+                <div class=" span3">
+                    <div class="ai">
+                        <h3>Developer</h3>
+                    </div>
+                </div>
+                <div class="span5">
+                    <h3>Rushabh Gosar</h3>
+                    <a href="http://rushg.me">http://rushg.me</a><p />
+                    <!--<div class="expand-bg"> <span class="expand ai2"> &nbsp; </span> </div>-->
+                </div>
+            </div>
+            <div class="row" id="ruiwei" onmouseover="onHover('ruiwei', true)" onmouseout="    onHover('ruiwei', false)">
+                <div class="span3">
+                    <div class="html">
+                        <h3>Developer</h3>
+                    </div>
+                </div>
+                <div class="span5">
+                    <h3>Ruiwei Bu</h3>
+                    <a href="http://darkfall.me">http://darkfall.me</a><p />
+                    <!--<div class="expand-bg"> <span class="expand html2"> &nbsp; </span> </div>-->
+                </div>
+            </div>
+            <div class="row" id="leigh" onmouseover="onHover('leigh', true)" onmouseout="    onHover('leigh', false)">
+                <div class="span3">
+                    <div class="css">
+                        <h3>Developer</h3>
+                    </div>
+                </div>
+                <div class="span5">
+                    <h3>Leigh Raze</h3>
+                    <!--<div class="expand-bg"> <span class="expand css2"> &nbsp; </span> </div>-->
+                </div>
+            </div>
+            <!--Dummy images by The Fox And King :: http://dribbble.com/snootyfox-->
         </div>
-      </div>
-      <!--END: blog container-->
-      <!-- Social Icons -->
-      <div class="row social">
-        <ul class="social-icons">
-          <li><a href="#" target="_blank"><img src="img/fb.png" alt="facebook"></a></li>
-          <li><a href="#" target="_blank"><img src="img/tw.png" alt="twitter"></a></li>
-          <li><a href="#" target="_blank"><img src="img/go.png" alt="google plus"></a></li>
-          <li><a href="#" target="_blank"><img src="img/pin.png" alt="pinterest"></a></li>
-          <li><a href="#" target="_blank"><img src="img/st.png" alt="stumbleupon"></a></li>
-          <li><a href="#" target="_blank"><img src="img/dr.png" alt="dribbble"></a></li>
-        </ul>
-      </div>
-      <!-- END: Social Icons -->
-    </div>
-    <!-- Footer -->
-    <div class="footer">
-      <div class="container">
-        <p class="pull-left"><a href="http://igmcapsone.cloudapp.net">www.portfolios-go.here</a></p>
-        <p class="pull-right"><a href="##myModal" role="button" data-toggle="modal"> <i class="icon-mail"></i>rushabh.techie@gmail.com</a></p>
-      </div>
-    </div>
-    <!-- Contact form in Modal -->
-    <!-- Modal -->
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel"><i class="icon-mail"></i> Contact Me</h3>
-      </div>
-      <div class="modal-body">
-        <form>
-          <input type="text" placeholder="Yopur Name">
-          <input type="text" placeholder="Your Email">
-          <input type="text" placeholder="Website (Optional)">
-          <textarea rows="3" style="width:80%"></textarea>
-          <br/>
-          <button type="submit" class="btn btn-large"><i class="icon-paper-plane"></i> SUBMIT</button>
-        </form>
-      </div>
-    </div>
-    <!-- Scripts -->
-    <script src="js/vertical-scroll.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script>
-         //  $('#myModal').modal('hidden')
-    </script>
+        <!--END: credits container-->
+        <!-- blog container -->
+        <div id="blog" class="container" onload="sliderLoaded('slide')">
+            <h2>Blog</h2>
+            <h3> Live Feed </h3>
+            <div class="btn-center">
+                '
+                <input id="slide" type="range" onmouseover="sliderLoaded('slide')" onload="    sliderLoaded('slide')" onchange="    updateSlider(this.value)">
+                <div id="sliderAmount"></div>
+                <a href="#" class="hire-me"><i class="icon-download"></i> View Full Blog </a>
+
+                <!--<h2>125kb</h2>-->
+            </div>
+        </div>
+        <!--END: blog container-->
+        <!-- Social Icons -->
+        <div class="row social">
+            <ul class="social-icons">
+                <li><a href="#" target="_blank"><img src="img/fb.png" alt="facebook"></a></li>
+                <li><a href="#" target="_blank"><img src="img/tw.png" alt="twitter"></a></li>
+                <li><a href="#" target="_blank"><img src="img/go.png" alt="google plus"></a></li>
+                <li><a href="#" target="_blank"><img src="img/pin.png" alt="pinterest"></a></li>
+                <li><a href="#" target="_blank"><img src="img/st.png" alt="stumbleupon"></a></li>
+                <li><a href="#" target="_blank"><img src="img/dr.png" alt="dribbble"></a></li>
+            </ul>
+        </div>
+        <!-- END: Social Icons -->
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            <div class="container">
+                <p class="pull-left"><a href="http://igmcapsone.cloudapp.net">www.portfolios-go.here</a></p>
+                <p class="pull-right"><a href="##myModal" role="button" data-toggle="modal"> <i class="icon-mail"></i>rushabh.techie@gmail.com</a></p>
+            </div>
+        </div>
+        <!-- Contact form in Modal -->
+        <!-- Modal -->
+        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel"><i class="icon-mail"></i> Contact Me</h3>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" placeholder="Your Name">
+                    <input type="text" placeholder="Your Email">
+                    <input type="text" placeholder="Website (Optional)">
+                    <textarea rows="3" style="width:80%"></textarea>
+                    <br />
+                    <button type="submit" class="btn btn-large"><i class="icon-paper-plane"></i> SUBMIT</button>
+                </form>
+            </div>
+        </div>
+        <!-- Scripts -->
+        <script src="js/vertical-scroll.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            //  $('#myModal').modal('hidden')
+        </script>
     </body>
     </html>

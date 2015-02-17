@@ -9,12 +9,14 @@ a.brand img {
 	padding-top: 120px;
 	min-height:500px;
 }
-#home h2, #play h2, #credits h2, #blog h2, #about h2{
+#home h2, #play h2, #credits h2, #blog h2, #about h2 {
+    /*margin-left:-50px;*/
 	font-weight:normal;
 	color: #39D084;
 }
 /***** home *****/
 	#home h1 {
+    /*margin-left:-50px;*/
 	color:#39d084;
 	font-weight: normal;
 }
@@ -42,10 +44,14 @@ a.hire-me {
 	-webkit-border-radius: 40px;
 	-moz-border-radius: 40px;
 	border-radius: 40px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+
 }
 a.hire-me:hover {
 	text-decoration:none;
 	background:#f04949;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+   
 }
 .social {
 	text-align:center;

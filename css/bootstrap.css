@@ -11,6 +11,7 @@
  *zoom: 1;
 }
 .clearfix:before, .clearfix:after {
+    margin: 0px;
 	display: table;
 	content: "";
 	line-height: 0;
@@ -319,6 +320,7 @@ a:hover, a:focus {
  margin-left: 2.127659574468085%;
 }
 .row-fluid .span12 {
+    margin-left: -300px;
 	width: 100%;
  *width: 99.94680851063829%;
 }
@@ -1871,6 +1873,9 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 	color: #333333;
 	text-decoration: none;
 }
+.icon-home {
+  background-position: 0 -24px;
+}
 /*[class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
@@ -1964,9 +1969,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 .icon-trash {
   background-position: -456px 0;
 }
-.icon-home {
-  background-position: 0 -24px;
-}
+
 .icon-file {
   background-position: -24px -24px;
 }

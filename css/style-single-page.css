@@ -52,6 +52,40 @@ a.hire-me {
 
 html, body { background: #333 url("http://codepen.io/images/classy_fabric.png"); }
 
+.bar142 {
+    align-content: stretch; 
+    width: 5px; 
+    height: 5px; 
+}
+
+.bar142:hover {
+    align-content: stretch; 
+    width: 5px; 
+    height: 5px; 
+    -webkit-box-shadow: 0px 0px 15px 1px; 
+    box-shadow: 0px 0px 15px 1px;    
+}
+
+.tex142 {
+    text-align: left; 
+    text-shadow: 0.25px 0.25px 0.25px;
+}
+
+.tex143 {
+    text-align: right; 
+    text-shadow: 0.25px 0.25px 0.25px;
+}
+
+.tex142:hover {
+    text-align: left; 
+    text-shadow: 1px 1px 1px;
+}
+
+.tex143:hover {
+    text-align: right; 
+    text-shadow: 1px 1px 1px;
+}
+
 .slides {
     padding: 0;
     width: 609px;

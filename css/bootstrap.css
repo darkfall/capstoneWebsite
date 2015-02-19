@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Bootstrap v2.3.2
  *
  * Copyright 2012 Twitter, Inc
@@ -4291,15 +4291,34 @@ to {
 }
 .carousel {
 	position: relative;
-    background-image:linear-gradient();
+    /*background-image:linear-gradient();*/
+    margin: auto;
     align-content:center;
+    max-width: 300%;
+    width: 100%;
+    min-width: 100%;
+    align-items:center;
+    align-self:center;
     background-origin: content-box;
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
 	line-height: 1;
 }
+.container img.wide {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+.container img.tall {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+}​
 .carousel-inner {
 	overflow: hidden;
 	width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    background-image:linear-gradient();
 	position: relative;
 }
 .carousel-inner > .item {
@@ -4311,7 +4330,7 @@ to {
 	transition: 0.6s ease-in-out left;
 }
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
-	display: block;
+	display: flex;
 	line-height: 1;
 }
 .carousel-inner > .active, .carousel-inner > .next, .carousel-inner > .prev {
@@ -4342,15 +4361,16 @@ to {
 }
 .carousel-control {
 	position: absolute;
+	align-content:center;    
 	top: 40%;
-	left: 15px;
+	margin-top: -20px;
 	width: 40px;
 	height: 40px;
-	margin-top: -20px;
 	font-size: 60px;
 	font-weight: 100;
 	line-height: 30px;
 	color: #ffffff;
+    align-self:center;
 	text-align: center;
 	background: #222222;
 	border: 3px solid #ffffff;
@@ -4372,13 +4392,17 @@ to {
 }
 .carousel-indicators {
 	position: absolute;
-	top: 15px;
-	right: 15px;
+	bottom: 15px;
+    vertical-align:central;
+	align-content:center;
+    align-items:center;
 	z-index: 5;
-	margin: 0;
+	margin: auto;
 	list-style: none;
 }
 .carousel-indicators li {
+    align-content:center;
+    align-items:center;
 	display: block;
 	float: left;
 	width: 10px;

@@ -10,7 +10,9 @@
     <meta name="description" content="">
     <!-- styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="font/font/fontello.ttf" />
+    <link href="css/font-awesome.css" rel="stylesheet"/>
+    <!--<link href="css/bootstrap-responsive.css" rel="stylesheet">-->
     <link href="css/style-single-page.css" rel="stylesheet">
     <link href="font/css/fontello.css" rel="stylesheet">
     <link href="css/sliderStyle.css" rel="stylesheet" >    
@@ -19,9 +21,12 @@
     <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
     <!-- Add fancyBox main JS and CSS files -->
     <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.5"></script>
-    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />       
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
 
+    </script>
     <script>   
+       
             function TimeLineClicked(controlName, flag) {
                 var control = document.getElementById(controlName);
                 if (control) {
@@ -88,19 +93,24 @@
             });
         </script>
     <script>      
-            $(document).ready(function() {
-                $(".fancybox-thumb").fancybox({
-                    helpers	: {
-                        title	: {
-                            type: 'inside'
-                        },
-                        overlay : {
-                                    css : {
-                                        'background' : 'rgba(1, 1, 1, 0.65)'
-                                    }
-                                }
-                    }
-                });
+        $(document).ready(function () {
+            $('.carousel').carousel({
+                interval: 3000,
+                wrap : true
+            })
+
+                //$(".fancybox-thumb").fancybox({
+                //    helpers	: {
+                //        title	: {
+                //            type: 'inside'
+                //        },
+                //        overlay : {
+                //                    css : {
+                //                        'background' : 'rgba(1, 1, 1, 0.65)'
+                //                    }
+                //                }
+                //    }
+                //});
             });
             function onHover(id, set) {
 
@@ -117,6 +127,44 @@
         </script>
     </head>
     <body>
+
+        <!--CAROUSEL-->
+        <!--Image Slider-->
+        <div id="carousel" class="carousel " intreval="300" wrap="true" data-ride="carousel" >
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="img/1.jpg" >
+                    <div class="carousel-caption">
+              
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/2.jpg" style="image-rendering:optimizeQuality; list-style-image:inherit; image-resolution:snap" >
+                    <div class="carousel-caption">
+                
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="fa fa-arrow-right" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="fa fa-arrow-left" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
         <div class="navbar navbar-fixed-top" id="navBarTop">
             <div class="navbar-inner">
                 <div class="container">
@@ -135,6 +183,9 @@
                 </div>
             </div>
         </div>
+
+
+
         <div class="clearfix">
             <!--home container-->
             <div id="home" class="container">
@@ -146,7 +197,6 @@
                         Ambiguous Utopia is an music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. <br />## Possible One page doc comes here ##
                         <br />Ambiguous Utopia (working title) is a music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. Players work to defend the core of their musical idea from an onslaught of enemies by deterring them by using a variety of ranged weapons and placing attacking towers to increase their defenses.
                         This document will start by going into some of the research that led us to our final game idea and research that helped inform design decisions behind the game. Next, we will explain our development process. This will include the tools that we used to improve our communication and organization, as well as what we used for the more technical aspects of development, such as version control and our build server. We will then discuss the design decisions we ended up making based on our research and also observations during development and playtesting.  After that, we will go into detail of our technical innovations, including the extensive tool base we created for the Unity editor to optimize our workflow. Finally, we will discuss results we found from playtesting and conclude with a postmortem of our capstone project.
-
                     </p>
                     <a href="demo/Web/Web.html" class="hire-me"><i class="fa fa-spinner fa-spin"></i> Play </a>
                 </div>

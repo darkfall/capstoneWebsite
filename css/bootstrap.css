@@ -4291,6 +4291,9 @@ to {
 }
 .carousel {
 	position: relative;
+    background-image:linear-gradient();
+    align-content:center;
+    background-origin: content-box;
 	margin-bottom: 20px;
 	line-height: 1;
 }

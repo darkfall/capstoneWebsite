@@ -4289,18 +4289,28 @@ to {
 	padding: 9px 15px;
 	border-top: 1px solid #e5e5e5;
 }
+
+#owl-demo .item{
+  margin: 3px;
+}
+#owl-demo .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
 .carousel {
 	position: relative;
-    /*background-image:linear-gradient();*/
-    margin: auto;
+    background-image:linear-gradient();
     align-content:center;
-    max-width: 300%;
+    max-width: 100%;
     width: 100%;
     min-width: 100%;
     align-items:center;
     align-self:center;
     background-origin: content-box;
-	/*margin-bottom: 20px;*/
+	margin-bottom: 20px;
 	line-height: 1;
 }
 .container img.wide {
@@ -4318,7 +4328,6 @@ to {
 	width: 100%;
     min-width: 100%;
     max-width: 100%;
-    background-image:linear-gradient();
 	position: relative;
 }
 .carousel-inner > .item {

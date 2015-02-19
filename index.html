@@ -95,22 +95,9 @@
     <script>      
         $(document).ready(function () {
             $('.carousel').carousel({
-                interval: 100,
+                interval: 1000,
                 wrap : true
-            })
-
-                //$(".fancybox-thumb").fancybox({
-                //    helpers	: {
-                //        title	: {
-                //            type: 'inside'
-                //        },
-                //        overlay : {
-                //                    css : {
-                //                        'background' : 'rgba(1, 1, 1, 0.65)'
-                //                    }
-                //                }
-                //    }
-                //});
+                })
             });
             function onHover(id, set) {
 
@@ -164,11 +151,11 @@
                 <div class="carousel-img">
                     <div class="item active">
                         <img src="img/AUScreens/1.jpg">
-                        <div class="carousel-caption">
-                        </div>
+                            <div class="carousel-caption">
+                            </div>
                     </div>
                 </div>
-                <div class="item">
+                <div class="item active">
                     <img src="img/2.jpg">
                     <div class="carousel-caption">
                     </div>
@@ -179,7 +166,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Controls -->
             <a class="fa fa-arrow-left" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -278,7 +264,7 @@
                 </div>
             </div>
             <div id="sliderAmount"></div>
-            <a href="#" class="hire-me"><i class="icon-download"></i> View Full Blog </a>
+            <a href="http://104.236.196.27" class="hire-me"><i class="icon-download"></i> View Full Blog </a>
         </div>
 
 

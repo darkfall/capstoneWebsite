@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
    if ($target.length) {
   	var targetOffset = $target.offset().top;
   	$('html,body')
-  	.animate({scrollTop: targetOffset}, 800);
+  	.animate({scrollTop: targetOffset}, 500);
     return false;
    }
  }

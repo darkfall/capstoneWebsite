@@ -4,18 +4,30 @@ a.brand img {
 	border-radius:50%;
 	border:5px solid #fff;
 }
-#home, #play, #credits, #blog, #about {
+#home, #music, #credits, #blog, #about {
 	padding:30px 0;
-	padding-top: 120px;
+	padding-top: 60px;
 	min-height:500px;
 }
-#home h2, #play h2, #credits h2, #blog h2, #about h2 {
+#home h2, #music h2, #credits h2, #blog h2, #about h2 {
     /*margin-left:-50px;*/
 	font-weight:normal;
 	color: #39D084;
 }
+#home h1, #music h1, #credits h1, #blog h1, #about h1 {
+    /*margin-left:-50px;*/
+	font-weight:normal;
+	color: #39D084;
+}
+
+#home p, #music p, #credits p, #blog p, #about p {
+	color:#fff;
+	font-size:18px;
+	line-height: 35px;
+}
+
 /***** home *****/
-	#home h1 {
+#home h1 {
     /*margin-left:-50px;*/
 	color:#39d084;
 	font-weight: normal;
@@ -30,27 +42,27 @@ a.brand img {
 	line-height: 35px;
 }
 #home .container .span5 {
-	padding:40px 0;
+	padding:10px 0;
 }
-a.hire-me {
+a.play {
 	display: inline-block;
     *display: inline;
-	padding:20px 60px;
-	background:#39d084;
-	color:#fff;
+	padding: 10px 40px;
+	background:#555;
+	color:#ddd;
 	text-transform:uppercase;
-	font-size:26px;
-	margin:20px 0;
-	-webkit-border-radius: 40px;
-	-moz-border-radius: 40px;
-	border-radius: 40px;
+	font-size:20px;
+	margin:20px auto;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
 
 }
 
 @import url(http://fonts.googleapis.com/css?family=Varela+Round);
 
-html, body { background: #333 url("http://codepen.io/images/classy_fabric.png"); }
+html, body { background: #333 }
 
 .bar142 {
     align-content: stretch; 
@@ -85,7 +97,7 @@ html, body { background: #333 url("http://codepen.io/images/classy_fabric.png");
     text-align: right; 
     text-shadow: 1px 1px 1px;
 }
-
+/*
 .slides {
     padding: 0;
     width: 609px;
@@ -124,7 +136,7 @@ html, body { background: #333 url("http://codepen.io/images/classy_fabric.png");
 .slide img {
     width: 100%;
     height: 100%;
-}
+}*/
 
 .nav label {
     width: 200px;
@@ -224,16 +236,19 @@ ul.social-icons li a {
 ul.social-icons li a:hover {
 	opacity:1;
 }
+
+
+
 /***** play *****/
-#play .span3 {
+#music .span3 {
 	width:235px;
 	overflow: hidden;
 }
-#play .span5 {
+#music .span5 {
 	text-align:left;
 	padding:47px 0;
 }
-#play .ps, #play .ai, #play .html, #play .css {
+#music .ps, #music .ai, #pmusiclay .html, #music .css {
 	padding:25px;
 	width:100px;
 	height:100px;
@@ -248,30 +263,30 @@ ul.social-icons li a:hover {
 	-o-transition: all 0.2s linear;
 	transition: all 0.2s linear;
 }
-#play .ps {
+#music .ps {
 	background:#30a5dc;
 }
-#play .ai {
+#music .ai {
 	background:#ee742b;
 }
-#play .html {
+#music .html {
 	background:#f04949;
 }
-#play .css {
+#music .css {
 	background:#39d084;
 }
-#play .ps:hover, #play .ai:hover, #play .html:hover, #play .css:hover {
+#music .ps:hover, #music .ai:hover, #music .html:hover, #music .css:hover {
 	border:8px solid #fff;
     background: #f04949;
 }
-#play .ps h3, #play .ai h3, #play .html h3, #play .css h3 {
+#music .ps h3, #music .ai h3, #music .html h3, #music .css h3 {
 	color:#fff;
     background: #39d084;
 	font-size: 3.4em;
 	font-weight: normal;
 	line-height: 80px;
 }
-#play .html h3, #play .css h3 {
+#music .html h3, #music .css h3 {
 	font-size: 2.2em;
 }
 .expand-bg {
@@ -289,13 +304,13 @@ ul.social-icons li a:hover {
 	padding: 4px 0 4px 5px;
 	position: absolute;
 }
-#play .span5 h3 {
+#music .span5 h3 {
 	font-size: 18.5px;
 	line-height: 15px;
 	font-weight:normal;
 	text-transform:uppercase;
 }
-#play .span5 h3 span {
+#music .span5 h3 span {
 	float:right;
 }
 .ps2 {
@@ -427,7 +442,7 @@ ul.credits-images li img:hover {
 	text-align:center;
 }
 .footer {
-	background:#355267;
+	background:#101010;
 }
 .footer p {
 	margin:20px 0;

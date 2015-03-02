@@ -1,182 +1,95 @@
-﻿    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
     <meta charset="utf-8">
-    <title>Ambigious Utopia - The Game!</title>
+    <title>Ambigious Utopia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ambigious Utopia - The Game">
         <meta name="keywords" content="Ambigious, Utopia, Unity 5, Tower Defense, C#">
-    <meta name="author" content="Rushabh™">
+    <meta name="author" content="Rushabh™, Darkfall">
     <meta name="description" content="">
+        
     <!-- styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/styleEX.css" rel="stylesheet">
     <link href="font/font/fontello.ttf" />
-    <link href="css/font-awesome.css" rel="stylesheet"/>
-    <!--<link href="css/bootstrap-responsive.css" rel="stylesheet">-->
     <link href="css/style-single-page.css" rel="stylesheet">
     <link href="font/css/fontello.css" rel="stylesheet">
-    <link href="css/sliderStyle.css" rel="stylesheet" >    
-    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
     <!-- Add jQuery library -->
     <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-    <!-- Add fancyBox main JS and CSS files -->
-    <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.5"></script>
-    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />       
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
-
+    <!-- Scripts -->
+    <script src="js/vertical-scroll.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+        
+    <script>
+        $(function()
+          {
+//            var items = [];
+//            $.ajax({
+//                url: "http://104.236.196.27/feed/json",
+//                dataType: "jsonp",
+//                success: function (data) {
+//                    console.log(data);
+//                    var $xJSON = ($(data))
+//
+//                    for (i = 0; i < $xJSON.length; i++) {
+//                        var entry = $xJSON[i];
+//                        var t = entry['title'];
+//                        items.push('<div><h3><b>' + entry['title'] + '</b></h3><small>Published by ' + entry['author'].trim() + ' on ' + entry['date'].trim() + '</small></h3> <div style="text-align:left">' + entry['content'] + '</div></div><hr />');
+//                    }
+//                    $("#displayDiv").html(items.join(''));
+//                    console.log(items);
+//                    items.reverse(); //For chronological purposes
+//                }
+//            });
+          });
+    
     </script>
-    <script>   
        
-            function TimeLineClicked(controlName, flag) {
-                var control = document.getElementById(controlName);
-                if (control) {
-                    if (flag) updateSlider(items.length - 1);
-                    else updateSlider(0);                    
-                }
-            }
-            var id = 0;
-            function updateSlider(slideAmount) {
-                
-                var slider = document.getElementById("slide");
-                if (slideAmount >= 0) {                   
-                    id = slideAmount ;
-                    var sliderDiv = document.getElementById("sliderAmount");
-                   /// id = (slideAmount) % ( items.length + 1 );
-                    console.log(id);
-                    sliderDiv.innerHTML = items[id];
-                    slider.value = id;
-                }
-            }
-
-        this.onload = 
-            function onLoad() {
-                sliderLoaded('slide', true);
-            }
-
-            function sliderLoaded(slider) {
-                sliderLoaded(slider, true);
-            }
-
-            function sliderLoaded(slider, update) { 
-                var sliderControl = document.getElementById(slider);
-                sliderControl.style.width = "100%";
-                if (items.length > 0) {
-                    sliderControl.max = items.length - 1;
-                    sliderControl.val = id;
-                    sliderControl.min = 0;
-                    sliderControl.step = 1;
-                }
-                else
-                    sliderControl.hide = true;
-                if ( update ) 
-                    updateSlider(id);
-            }
-        /// Holds all the items of the blog. 
-            var items = [];
-        /// End Collection
-            $.ajax({
-                url: "http://104.236.196.27/feed/json",
-                dataType: "jsonp",
-                success: function (data) {
-                    console.log(data);
-                    var $xJSON = ($(data))
-
-                    for (i = 0; i < $xJSON.length; i++) {
-                        var entry = $xJSON[i];
-                        var t = entry['title'];
-                        items.push('<div><h3><b>' + entry['title'] + '</b></h3><small>Published by ' + entry['author'].trim() + ' on ' + entry['date'].trim() + '</small></h3> <div style="text-align:left">' + entry['content'] + '</div></div><hr />');
-                    }
-                    $("#displayDiv").html(items.join(''));
-                    console.log(items);
-                    items.reverse(); //For chronological purposes
-                }
-            });
-        </script>
+           
     <script>      
         $(document).ready(function () {
             $('.carousel').carousel({
-                interval: 1000,
-                wrap : true
-                })
+                interval: 5000,
             });
-            function onHover(id, set) {
-
-                var elem = document.getElementById(id);
-                if (set) {
-                    elem.style.color = "red";
-                    elem.style.textShadow = " 0 1px 2px rgba(0, 0, 0, .6)";
-                }
-                else {
-                    elem.style.color = "white";
-                    elem.style.textShadow = "none";
-                }
-            }
-        </script>
+            
+        });
+        
+    </script>
     </head>
     <body>
 
         
 
-        <div class="navbar navbar-fixed-top" id="navBarTop">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#home"><img src="img/user.jpg" /></a>
-                    <ul class="nav nav-collapse pull-right">
-                        <li><a href="#home"><i class="icon-home"></i> Home </a></li>
-                        <li><a href="demo/Web/Web.html"><i class="icon-trophy"></i> Play </a></li>
-                        <li><a href="#credits"><i class="icon-picture"></i> Credits </a></li>
-                        <li><a href="#blog"><i class="icon-doc-text"></i> Blog </a></li>
-                        <!--<li><a href="#about"><i class="icon-doc-text"></i> About </a></li>-->
-                    </ul>
-                    <!-- Everything you want hidden at 940px or less, place within here -->
-                    <div class="nav-collapse collapse">
-                        <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    </div>
+        <div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" src="img/icon_tower_projectile.png" style="width:48px; margin-top:-14px;">
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li><a href="#home">Game</a></li>
+                    <li><a href="#music"> Design </a></li>
+                    <li><a href="#credits"> Team </a></li>
+<!--                    <li><a href="demo/Web/Web.html"> Demo </a></li>-->
+                    <li><a href="http://104.236.196.27" target="_blank"> Blog </a></li>
+                  </ul>
                 </div>
             </div>
         </div>
-
-        <!--CAROUSEL-->
-        <!--Image Slider-->
-        <div id="carousel" align="center" class="carousel " data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-img">
-                    <div class="item active">
-                        <img src="img/AUScreens/1.jpg">
-                            <div class="carousel-caption">
-                            </div>
-                    </div>
-                </div>
-                <div class="item active">
-                    <img src="img/2.jpg">
-                    <div class="carousel-caption">
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="img/3.jpg">
-                    <div class="carousel-caption">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Controls -->
-            <a class="fa fa-arrow-left" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="fa fa-arrow-right" aria-hidden="true"></span>
-                <span class="fa fa-arrow-right"></span>
-            </a>
-            <a class="fa fa-arrow-left" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="fa fa-arrow-left" aria-hidden="true"></span>
-                <span class="fa fa-arrow-left"></span>
-            </a>
-        </div>
+        
 
         <div class="clearfix">
             <!--home container-->
@@ -184,74 +97,145 @@
                 <!--<div class="span3"> <img src="img/mini.png"> </div>-->
                 <div class="span12">
                     <h1>[Ambigious Utopia]</h1>
-                    <h3>Tower Defense game</h3>
+<!--                    <h3>Tower Defense game</h3>-->
                     <p>
-                        Ambiguous Utopia is an music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. <br />## Possible One page doc comes here ##
-                        <br />Ambiguous Utopia (working title) is a music-influenced action shooter in which players develop and protect their musical ideas with added strategic gameplay through tower defense elements. Players work to defend the core of their musical idea from an onslaught of enemies by deterring them by using a variety of ranged weapons and placing attacking towers to increase their defenses.
-                        This document will start by going into some of the research that led us to our final game idea and research that helped inform design decisions behind the game. Next, we will explain our development process. This will include the tools that we used to improve our communication and organization, as well as what we used for the more technical aspects of development, such as version control and our build server. We will then discuss the design decisions we ended up making based on our research and also observations during development and playtesting.  After that, we will go into detail of our technical innovations, including the extensive tool base we created for the Unity editor to optimize our workflow. Finally, we will discuss results we found from playtesting and conclude with a postmortem of our capstone project.
+                        Ambiguous Utopia (working title) is an music-influenced top-down <span class="highlight_text">Action Shooter</span> and <span class="highlight_text">Tower Defense</span> game in which players develop and protect their "music core" with different weapons and towers, while many game elements are linked with the <span class="highlight_text">background tracks</span> of the game both visually and mechanically.
                     </p>
-                    <a href="demo/Web/Web.html" class="hire-me"><i class="fa fa-spinner fa-spin"></i> Play </a>
+                   
+                    <div id="ss-carousel" class="carousel slide" data-ride="carousel">
+                      <!-- Indicators -->
+                      <ol class="carousel-indicators">
+                        <li data-target="#ss-carousel-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#ss-carousel-generic" data-slide-to="1"></li>
+                        <li data-target="#ss-carousel-generic" data-slide-to="2"></li>
+                        <li data-target="#ss-carousel-generic" data-slide-to="3"></li>
+                        <li data-target="#ss-carousel-generic" data-slide-to="4"></li>
+                      </ol>
+
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                          <img src="images/ss1.png" alt="ss1">
+                          <div class="carousel-caption">
+                              Demo ScreenShot
+                          </div>
+                        </div>
+                        <div class="item">
+                          <img src="images/ss2.png" alt="ss2">
+                          <div class="carousel-caption">
+                              Demo ScreenShot
+                          </div>
+                        </div>
+                        <div class="item">
+                          <img src="images/ss3.png" alt="ss3">
+                          <div class="carousel-caption">
+                              Demo ScreenShot
+                          </div>
+                        </div>
+                        <div class="item">
+                          <img src="images/ss4.png" alt="ss4">
+                          <div class="carousel-caption">
+                              Demo ScreenShot
+                          </div>
+                        </div>
+                        <div class="item">
+                          <img src="images/ss5.png" alt="ss5">
+                          <div class="carousel-caption">
+                              Demo ScreenShot
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Controls -->
+                      <a class="left carousel-control" href="#ss-carousel-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control" href="#ss-carousel-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    
+                    <div class="center-block center_button">
+                        <a class="play">Demo coming soon...</a>
+                    </div>
                 </div>
-                <!-- Social Icons -->
-                <!-- END: Social Icons -->
+                
+
             </div>
         </div>
-        <!--END: play container-->
+        
+        <div id="music" class="container">
+            <div class="span12">
+                <h1>[Sound]</h1>
+                <p>
+                To make the sounds working in the game, we heavily leverages the new Audio System in <span class="highlight_text">Unity 5</span>, <span class="highlight_text">Reaktion</span> (<a href="https://github.com/keijiro/Reaktion" class="context_link">Github</a>) and our homebrew audio layering system <span class="highlight_text">Hymmnos</span> and runtime <span class="highlight_text">Sequencer</span>. 
+                </p>
+                <p>
+                The background music of the game will change dynamically depending on a variety of variables and events, such as the number of towers, number of enemies and whether the player is waiting for respawn or not.
+                </p>
+            </div>
+            
+            <div class="span12" style="margin-top: 40px">
+                <h1>[Colors]</h1>
+                <p>
+                In the game, players can only place towers on hexagon tiles with a <span class="highlight_text">Color Tint</span>, and different Color Tint will give the tower different powers.
+                </p>
+                <div class="row">
+                    <div class="col-md-5 col-sm-offset-1">
+                        <div><img class="hex_image" src="images/hexa-red.png"/><span class="hex_desp_text">Strong</span></div>
+                        <div><img class="hex_image" src="images/hexa-blue.png"/><span class="hex_desp_text">Slow</span></div>
+                        <div><img class="hex_image" src="images/hexa-green.png"/><span class="hex_desp_text">Swift</span></div>
+                        <div><img class="hex_image" src="images/hexa-yellow.png"/><span class="hex_desp_text">Splash</span></div>
+                    </div>
+                </div>
+                <p>
+                The systems expands the types of towers the player can build while keeping a small set of prototype towers to simplify the player controls. 
+                </p>
+            </div>
+             
+        </div>
+        
         <!-- creditss container -->
+        
         <div id="credits" class="container">
-            <h2>Game Credits</h2>
-            <div class="row" id="brian" onmouseover="onHover('brian', true)" onmouseout=" onHover('brian', false)">
-                <div class="span3">
-                    <div class="ps">
-                        <h3>Design & Sound</h3>
+            <h1>[Team]</h1>
+            <div id="credits_container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="credits_button">Brian Clanton</div>
+                        <div class="credits_button">Rushabh Gosar</div>
+                        <div class="credits_button">Ruiwei Bu</div>
+                        <div class="credits_button">Leigh Raze</div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="credits_button">  </div>
+                        <div class="credits_button"><a class="credits_button" href="http://brianclanton.com">http://brianclanton.com</a></div>
+                        <div class="credits_button"><a class="credits_button" href="http://brianclanton.com">http://rushg.me</a></div>
+                        <div class="credits_button"><a class="credits_button" href="http://brianclanton.com">http://darkfall.me</a></div>
                     </div>
                 </div>
-                <div class="span5">
-                    <h3>Brian Clanton</h3>
-                    <a href="http://brianclanton.com">http://brianclanton.com</a><p />
-                    <!--<div class="expand-bg"> <span class="expand ps2"> &nbsp; </span> </div>-->
-                </div>
-                <span></span>
             </div>
-            <div class="row" id="rushabh" onmouseover="onHover('rushabh', true)" onmouseout="onHover('rushabh', false)">
-                <div class=" span3">
-                    <div class="ai">
-                        <h3>Developer</h3>
+            <h1 style="margin-top: 40px">[Artists]</h1>
+            <div id="credits_container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="credits_button">Claire Meixne</div>
+                        <div class="credits_button">Clifton Rice</div>
+                        <div class="credits_button">Brett Morris</div>
+                        <div class="credits_button">Doug Watro</div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="credits_button">  </div>
+                        <div class="credits_button">  </div>
+                        <div class="credits_button">  </div>
+                        <div class="credits_button">  </div>
                     </div>
                 </div>
-                <div class="span5">
-                    <h3>Rushabh Gosar</h3>
-                    <a href="http://rushg.me">http://rushg.me</a><p />
-                    <!--<div class="expand-bg"> <span class="expand ai2"> &nbsp; </span> </div>-->
-                </div>
             </div>
-            <div class="row" id="ruiwei" onmouseover="onHover('ruiwei', true)" onmouseout="onHover('ruiwei', false)">
-                <div class="span3">
-                    <div class="html">
-                        <h3>Developer</h3>
-                    </div>
-                </div>
-                <div class="span5">
-                    <h3>Ruiwei Bu</h3>
-                    <a href="http://darkfall.me">http://darkfall.me</a><p />
-                    <!--<div class="expand-bg"> <span class="expand html2"> &nbsp; </span> </div>-->
-                </div>
-            </div>
-            <div class="row" id="leigh" onmouseover="onHover('leigh', true)" onmouseout="onHover('leigh', false)">
-                <div class="span3">
-                    <div class="css">
-                        <h3>Developer</h3>
-                    </div>
-                </div>
-                <div class="span5">
-                    <h3>Leigh Raze</h3>
-                    <!--<div class="expand-bg"> <span class="expand css2"> &nbsp; </span> </div>-->
-                </div>
-            </div>
-            <!--Dummy images by The Fox And King :: http://dribbble.com/snootyfox-->
         </div>
-        <!--END: credits container-->
-        <!-- blog container -->
+<!--
         <div id="blog" class="container" >
             <div>
                 <h2>Blog</h2>
@@ -266,11 +250,12 @@
             <div id="sliderAmount"></div>
             <a href="http://104.236.196.27" class="hire-me"><i class="icon-download"></i> View Full Blog </a>
         </div>
+-->
 
 
         <!--END: blog container-->
         <!-- Social Icons -->
-        <div class="row social">
+       <!-- <div class="row social">
             <ul class="social-icons">
                 <li><a href="#" target="_blank"><img src="img/fb.png" alt="facebook"></a></li>
                 <li><a href="#" target="_blank"><img src="img/tw.png" alt="twitter"></a></li>
@@ -279,14 +264,12 @@
                 <li><a href="#" target="_blank"><img src="img/st.png" alt="stumbleupon"></a></li>
                 <li><a href="#" target="_blank"><img src="img/dr.png" alt="dribbble"></a></li>
             </ul>
-        </div>
+        </div>-->
         <!-- END: Social Icons -->
         </div>
-        <!-- Footer -->
         <div class="footer">
             <div class="container">
-                <p class="pull-left"><a href="http://igmcapsone.cloudapp.net">www.portfolios-go.here</a></p>
-                <p class="pull-right"><a href="##myModal" role="button" data-toggle="modal"> <i class="icon-mail"></i>rushabh.techie@gmail.com</a></p>
+                <p class="pull-right"><a href="##myModal" role="button" data-toggle="modal">Copyright &copy; Team AU 2014-2015  </p>
             </div>
         </div>
         <!-- Contact form in Modal -->
@@ -308,11 +291,5 @@
             </div>
 
         </div>
-        <!-- Scripts -->
-        <script src="js/vertical-scroll.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script>
-            //  $('#myModal').modal('hidden')
-        </script>
     </body>
-    </html>
+</html>
